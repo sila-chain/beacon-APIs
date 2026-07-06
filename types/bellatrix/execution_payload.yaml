@@ -2,7 +2,7 @@ Bellatrix:
   ExecutionPayloadCommon:
     # An abstract object to collect the common fields between the ExecutionPayload and the ExecutionPayloadHeader objects.
     type: object
-    description: "The [`ExecutionPayload`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/bellatrix/beacon-chain.md#executionpayload) object from the CL Bellatrix spec."
+    description: "The [`ExecutionPayload`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/bellatrix/beacon-chain.md#executionpayload) object from the CL Bellatrix spec."
     required: [parent_hash, fee_recipient, state_root, receipts_root, logs_bloom, prev_randao, block_number, gas_limit, gas_used, timestamp, extra_data, base_fee_per_gas, block_hash]
     properties:
       parent_hash:
@@ -43,7 +43,7 @@ Bellatrix:
             $ref: './transactions.yaml#/Bellatrix/Transactions'
 
   ExecutionPayloadHeader:
-    description: "The [`ExecutionPayloadHeader`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/bellatrix/beacon-chain.md#executionpayloadheader) object from the CL Bellatrix spec."
+    description: "The [`ExecutionPayloadHeader`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/bellatrix/beacon-chain.md#executionpayloadheader) object from the CL Bellatrix spec."
     allOf:
       - $ref: '#/Bellatrix/ExecutionPayloadCommon'
       - type: object

@@ -34,8 +34,8 @@ get:
     "200":
       description: "Returns aggregated `Attestation` object with same `AttestationData` root, slot and committee index."
       headers:
-        Eth-Consensus-Version:
-          $ref: '../../beacon-node-oapi.yaml#/components/headers/Eth-Consensus-Version'
+        Sil-Consensus-Version:
+          $ref: '../../beacon-node-oapi.yaml#/components/headers/Sil-Consensus-Version'
       content:
         application/json:
           schema:
@@ -45,8 +45,8 @@ get:
             properties:
               version:
                 type: string
-                enum: [phase0, altair, bellatrix, capella, deneb, electra, fulu]
-                example: "fulu"
+                enum: [phase0, altair, bellatrix, capella, sila_deneb, electra, sila_fulu]
+                example: "sila_fulu"
               data:
                 anyOf:
                   - $ref: '../../beacon-node-oapi.yaml#/components/schemas/Electra.Attestation'

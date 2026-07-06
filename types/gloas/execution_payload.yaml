@@ -1,8 +1,8 @@
 Gloas:
   ExecutionPayload:
-    description: "The [`ExecutionPayload`](https://github.com/ethereum/consensus-specs/blob/v1.7.0-alpha.8/specs/gloas/beacon-chain.md#executionpayload) object from the CL Gloas spec."
+    description: "The [`ExecutionPayload`](https://github.com/sila-chain/consensus-specs/blob/v1.7.0-alpha.8/specs/gloas/beacon-chain.md#executionpayload) object from the CL Gloas spec."
     allOf:
-      - $ref: "../deneb/execution_payload.yaml#/Deneb/ExecutionPayload"
+      - $ref: "../sila_deneb/execution_payload.yaml#/SilaDeneb/ExecutionPayload"
       - type: object
         required: [block_access_list, slot_number]
         properties:

@@ -1,8 +1,8 @@
-Fulu:
+SilaFulu:
   DataColumnSidecars:
     type: array
     items:
-      $ref: '#/Fulu/DataColumnSidecar'
+      $ref: '#/SilaFulu/DataColumnSidecar'
     minItems: 0
     maxItems: 128
 
@@ -17,11 +17,11 @@ Fulu:
     type: string
     format: hex
     pattern: "^0x[a-fA-F0-9]{4096}$"
-    description: "A data column is `FIELD_ELEMENTS_PER_CELL * size_of(BLSFieldElement) = 64 * 32 = 2048` bytes (`DATA`) representing a Cell as defined in Fulu"
+    description: "A data column is `FIELD_ELEMENTS_PER_CELL * size_of(BLSFieldElement) = 64 * 32 = 2048` bytes (`DATA`) representing a Cell as defined in SilaFulu"
 
   DataColumnSidecar:
     type: object
-    description: "A [`DataColumnSidecar`](https://github.com/ethereum/consensus-specs/blob/v1.6.0/specs/fulu/das-core.md#datacolumnsidecar) as defined in the Fulu consensus spec."
+    description: "A [`DataColumnSidecar`](https://github.com/sila-chain/consensus-specs/blob/v1.6.0/specs/sila_fulu/das-core.md#datacolumnsidecar) as defined in the SilaFulu consensus spec."
     required: [index, column, kzg_commitments, kzg_proofs, signed_block_header, kzg_commitments_inclusion_proof]
     properties:
       index:
@@ -29,7 +29,7 @@ Fulu:
       column:
         type: array
         items:
-          $ref: '#/Fulu/DataColumn'
+          $ref: '#/SilaFulu/DataColumn'
         minItems: 0
         maxItems: 4096
       kzg_commitments:
@@ -47,4 +47,4 @@ Fulu:
       signed_block_header:
         $ref: "../phase0/block.yaml#/Phase0/SignedBeaconBlockHeader"
       kzg_commitments_inclusion_proof:
-        $ref: '#/Fulu/KZGCommitmentsInclusionProof'
+        $ref: '#/SilaFulu/KZGCommitmentsInclusionProof'

@@ -32,7 +32,7 @@ If proposing block, then at immediate start of slot:
   - Stateful (`include_payload=false`): [fetch ExecutionPayloadEnvelope](#/Validator/getExecutionPayloadEnvelope)
     from the same beacon node (blinded form by default). Sign envelope and [submit `SignedBlindedExecutionPayloadEnvelope`](#/Beacon/publishExecutionPayloadEnvelope)
     (beacon node reconstructs the full envelope from its cache).
-  - Must submit early enough for PTC attestation by [PAYLOAD_ATTESTATION_DUE_BPS](https://github.com/ethereum/consensus-specs/blob/v1.7.0-alpha.2/specs/gloas/validator.md#time-parameters) of slot duration
+  - Must submit early enough for PTC attestation by [PAYLOAD_ATTESTATION_DUE_BPS](https://github.com/sila-chain/consensus-specs/blob/v1.7.0-alpha.2/specs/gloas/validator.md#time-parameters) of slot duration
 
 Monitor chain block reorganization events (TBD) as they could change block proposers.
 If reorg is detected, ask for new proposer duties and proceed from 1.
@@ -44,7 +44,7 @@ Result are array of objects with validator, his committee and attestation slot.
 
 Attesting:
 1. Upon receiving duty, have beacon node prepare committee subnet
-    - [Check if aggregator by computing `slot_signature`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/phase0/validator.md#attestation-aggregation)
+    - [Check if aggregator by computing `slot_signature`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/phase0/validator.md#attestation-aggregation)
     - [Ask beacon node to prepare your subnet](#/ValidatorRequiredApi/prepareBeaconCommitteeSubnet)
       -- Note, validator client only needs to submit one call to
       `prepareBeaconCommitteeSubnet` per committee/slot its validators have
@@ -52,14 +52,14 @@ Attesting:
       set `is_aggregator` to `True`,
 2. Wait for new BeaconBlock for the assigned slot (either stream updates or poll)
     - Pre-Gloas forks: Max wait `SECONDS_PER_SLOT / 3` seconds into the assigned slot
-    - Post-Gloas forks: Max wait [ATTESTATION_DUE_BPS_GLOAS](https://github.com/ethereum/consensus-specs/blob/v1.7.0-alpha.8/specs/gloas/validator.md#time-parameters) seconds into the assigned slot
+    - Post-Gloas forks: Max wait [ATTESTATION_DUE_BPS_GLOAS](https://github.com/sila-chain/consensus-specs/blob/v1.7.0-alpha.8/specs/gloas/validator.md#time-parameters) seconds into the assigned slot
 3. [Fetch AttestationData](#/ValidatorRequiredApi/produceAttestationData)
 4. [Submit Attestation](#/ValidatorRequiredApi/submitPoolAttestations) (AttestationData + aggregation bits)
     - Aggregation bits are `Bitlist` with length of committee (received in AttesterDuty)
     with bit on position `validator_committee_index` (see AttesterDuty) set to true
 5. If aggregator:
     - Pre-Gloas forks: Wait for `SECONDS_PER_SLOT * 2 / 3` seconds into the assigned slot
-    - Post-Gloas forks: Wait for [AGGREGATE_DUE_BPS_GLOAS](https://github.com/ethereum/consensus-specs/blob/v1.7.0-alpha.8/specs/gloas/validator.md#time-parameters) seconds into the assigned slot
+    - Post-Gloas forks: Wait for [AGGREGATE_DUE_BPS_GLOAS](https://github.com/sila-chain/consensus-specs/blob/v1.7.0-alpha.8/specs/gloas/validator.md#time-parameters) seconds into the assigned slot
     - [Fetch aggregated Attestation](#/ValidatorRequiredApi/getAggregatedAttestation) from Beacon Node you've subscribed to your subnet
     - [Publish SignedAggregateAndProofs](#/ValidatorRequiredApi/publishAggregateAndProofs)
 
@@ -73,7 +73,7 @@ Result are array of objects with validator index and assigned slot for payload t
 
 PTC Attesting:
 1. Wait for execution payload and blobs to become available for the assigned slot (either stream updates or poll)
-    - Max wait [PAYLOAD_ATTESTATION_DUE_BPS](https://github.com/ethereum/consensus-specs/blob/v1.7.0-alpha.8/specs/gloas/validator.md#time-parameters) seconds into the assigned slot
+    - Max wait [PAYLOAD_ATTESTATION_DUE_BPS](https://github.com/sila-chain/consensus-specs/blob/v1.7.0-alpha.8/specs/gloas/validator.md#time-parameters) seconds into the assigned slot
 2. [Fetch PayloadAttestationData](#/ValidatorRequiredApi/producePayloadAttestationData) for the assigned slot
 3. Sign `PayloadAttestationData` to create `PayloadAttestationMessage`
 4. [Submit PayloadAttestationMessages](#/ValidatorRequiredApi/submitPayloadAttestationMessages)
@@ -91,7 +91,7 @@ in the beacon state's builder registry.
 Building:
 1. [Fetch ExecutionPayloadBid](#/Validator/getExecutionPayloadBid) from beacon node for the current or next slot's proposer to include.
     - Beacon node obtains payload via `engine_getPayload` call to execution client
-2. Cache fields required to form an [ExecutionPayloadEnvelope](https://github.com/ethereum/consensus-specs/blob/v1.7.0-alpha.8/specs/gloas/beacon-chain.md#executionpayloadenvelope)
+2. Cache fields required to form an [ExecutionPayloadEnvelope](https://github.com/sila-chain/consensus-specs/blob/v1.7.0-alpha.8/specs/gloas/beacon-chain.md#executionpayloadenvelope)
 2. Sign `ExecutionPayloadBid` to create `SignedExecutionPayloadBid`
 3. [Submit SignedExecutionPayloadBid](#/Beacon/publishExecutionPayloadBid) to network for proposer consideration
 4. If bid is selected by proposer in their block:
@@ -99,6 +99,6 @@ Building:
     - Sign envelope and submit to network via [publishExecutionPayloadEnvelope](#/Beacon/publishExecutionPayloadEnvelope):
       - Stateless (multi-BN): submit `SignedExecutionPayloadEnvelopeContents` (envelope + blobs + KZG proofs)
       - Stateful (single BN): submit `SignedBlindedExecutionPayloadEnvelope` (beacon node reconstructs full envelope from cache)
-    - Must submit early enough for PTC attestation by [PAYLOAD_ATTESTATION_DUE_BPS](https://github.com/ethereum/consensus-specs/blob/v1.7.0-alpha.2/specs/gloas/validator.md#time-parameters) of slot duration
+    - Must submit early enough for PTC attestation by [PAYLOAD_ATTESTATION_DUE_BPS](https://github.com/sila-chain/consensus-specs/blob/v1.7.0-alpha.2/specs/gloas/validator.md#time-parameters) of slot duration
 
 Monitor for block proposals containing your bid to trigger envelope release.

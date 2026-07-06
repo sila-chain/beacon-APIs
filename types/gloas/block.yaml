@@ -1,14 +1,14 @@
 Gloas:
   BeaconBlockBody:
     type: object
-    description: "The [`BeaconBlockBody`](https://github.com/ethereum/consensus-specs/blob/v1.7.0-alpha.8/specs/gloas/beacon-chain.md#beaconblockbody) object from the CL Gloas spec."
-    required: [randao_reveal, eth1_data, graffiti, proposer_slashings, attester_slashings, attestations, deposits, voluntary_exits, sync_aggregate, bls_to_execution_changes, signed_execution_payload_bid, payload_attestations, parent_execution_requests]
+    description: "The [`BeaconBlockBody`](https://github.com/sila-chain/consensus-specs/blob/v1.7.0-alpha.8/specs/gloas/beacon-chain.md#beaconblockbody) object from the CL Gloas spec."
+    required: [randao_reveal, sil1_data, graffiti, proposer_slashings, attester_slashings, attestations, deposits, voluntary_exits, sync_aggregate, bls_to_execution_changes, signed_execution_payload_bid, payload_attestations, parent_execution_requests]
     properties:
       randao_reveal:
         $ref: "../primitive.yaml#/Signature"
         description: "The RANDAO reveal value provided by the validator."
-      eth1_data:
-        $ref: "../phase0/eth1.yaml#/Phase0/Eth1Data"
+      sil1_data:
+        $ref: "../phase0/sil1.yaml#/Phase0/Sil1Data"
       graffiti:
         $ref: "../primitive.yaml#/Graffiti"
       proposer_slashings:
@@ -50,7 +50,7 @@ Gloas:
         $ref: "../electra/execution_requests.yaml#/Electra/ExecutionRequests"
 
   BeaconBlock:
-    description: "The [`BeaconBlock`](https://github.com/ethereum/consensus-specs/blob/v1.5.0/specs/phase0/beacon-chain.md#beaconblock) object from the CL Gloas spec."
+    description: "The [`BeaconBlock`](https://github.com/sila-chain/consensus-specs/blob/v1.5.0/specs/phase0/beacon-chain.md#beaconblock) object from the CL Gloas spec."
     allOf:
       - $ref: "../altair/block.yaml#/Altair/BeaconBlockCommon"
       - type: object
@@ -61,7 +61,7 @@ Gloas:
 
   SignedBeaconBlock:
     type: object
-    description: "The [`SignedBeaconBlock`](https://github.com/ethereum/consensus-specs/blob/v1.5.0/specs/phase0/beacon-chain.md#signedbeaconblock) object envelope from the CL Gloas spec."
+    description: "The [`SignedBeaconBlock`](https://github.com/sila-chain/consensus-specs/blob/v1.5.0/specs/phase0/beacon-chain.md#signedbeaconblock) object envelope from the CL Gloas spec."
     required: [message, signature]
     properties:
       message:

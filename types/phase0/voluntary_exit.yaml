@@ -1,7 +1,7 @@
 Phase0:
   VoluntaryExit:
     type: object
-    description: "The [`VoluntaryExit`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#voluntaryexit) object from the CL spec."
+    description: "The [`VoluntaryExit`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#voluntaryexit) object from the CL spec."
     required: [epoch, validator_index]
     properties:
       epoch:
@@ -13,7 +13,7 @@ Phase0:
 
   SignedVoluntaryExit:
     type: object
-    description: "The [`SignedVoluntaryExit`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#signedvoluntaryexit) object from the CL spec."
+    description: "The [`SignedVoluntaryExit`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#signedvoluntaryexit) object from the CL spec."
     required: [message, signature]
     properties:
       message:

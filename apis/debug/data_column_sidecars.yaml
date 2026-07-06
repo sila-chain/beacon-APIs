@@ -27,8 +27,8 @@ get:
     "200":
       description: "Successful response"
       headers:
-        Eth-Consensus-Version:
-          $ref: '../../beacon-node-oapi.yaml#/components/headers/Eth-Consensus-Version'
+        Sil-Consensus-Version:
+          $ref: '../../beacon-node-oapi.yaml#/components/headers/Sil-Consensus-Version'
       content:
         application/json:
           schema:
@@ -38,7 +38,7 @@ get:
             properties:
               version:
                 type: string
-                enum: [fulu, gloas]
+                enum: [sila_fulu, gloas]
                 example: "gloas"
               execution_optimistic:
                 $ref: "../../beacon-node-oapi.yaml#/components/schemas/ExecutionOptimistic"
@@ -47,7 +47,7 @@ get:
               data:
                 anyOf:
                   - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Gloas.DataColumnSidecars"
-                  - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Fulu.DataColumnSidecars"
+                  - $ref: "../../beacon-node-oapi.yaml#/components/schemas/SilaFulu.DataColumnSidecars"
         application/octet-stream:
           schema:
             description: "SSZ serialized `DataColumnSidecars` bytes. Use Accept header to choose this response type"

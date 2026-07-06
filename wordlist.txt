@@ -1,4 +1,4 @@
-eth
+sil
 cli
 oapi
 redocly
@@ -36,7 +36,7 @@ KZGProof
 KZGProofs
 KZGCommitmentInclusionProof
 LMD
-fulu
+sila_fulu
 gloas
 LH
 ClientVersionV

@@ -12,6 +12,6 @@ Gloas:
       execution_payload_envelope:
         $ref: "./execution_payload_envelope.yaml#/Gloas/ExecutionPayloadEnvelope"
       kzg_proofs:
-        $ref: "../fulu/block_contents.yaml#/Fulu/KZGProofs"
+        $ref: "../sila_fulu/block_contents.yaml#/SilaFulu/KZGProofs"
       blobs:
-        $ref: "../deneb/block_contents.yaml#/Deneb/Blobs"
+        $ref: "../sila_deneb/block_contents.yaml#/SilaDeneb/Blobs"

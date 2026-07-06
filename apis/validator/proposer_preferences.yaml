@@ -11,8 +11,8 @@ post:
       builders are warm at the fork boundary, letting builders prepare valid bids for the first
       Gloas slots.
     - Until the Gloas fork activates, beacon nodes MUST continue to honor fee recipient and gas
-      limit information supplied via `POST /eth/v1/validator/prepare_beacon_proposer` and
-      `POST /eth/v1/validator/register_validator`. From the Gloas fork onwards, signed proposer
+      limit information supplied via `POST /sil/v1/validator/prepare_beacon_proposer` and
+      `POST /sil/v1/validator/register_validator`. From the Gloas fork onwards, signed proposer
       preferences supersede both endpoints as the source of proposer fee recipient and gas
       limit preferences.
     - For validators served by the beacon node, if no signed proposer preferences are available
@@ -26,7 +26,7 @@ post:
       schema:
         $ref: "../../beacon-node-oapi.yaml#/components/schemas/ConsensusVersion"
       required: true
-      name: Eth-Consensus-Version
+      name: Sil-Consensus-Version
       description: "The active consensus version to which the signed proposer preferences being submitted belongs."
   tags:
     - Validator

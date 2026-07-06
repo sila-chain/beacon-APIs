@@ -1,7 +1,7 @@
 Phase0:
-  Eth1Data:
+  Sil1Data:
     type: object
-    description: "The [`Eth1Data`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#eth1data) object from the CL spec."
+    description: "The [`Sil1Data`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#sil1data) object from the CL spec."
     required: [deposit_root, deposit_count, block_hash]
     properties:
       deposit_root:
@@ -12,4 +12,4 @@ Phase0:
         description: "Total number of deposits."
       block_hash:
         $ref: '../primitive.yaml#/Hash32'
-        description: "Ethereum 1.x block hash."
+        description: "Sila 1.x block hash."

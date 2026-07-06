@@ -4,7 +4,7 @@ post:
   deprecated: true
   description: |
     Deprecated from Gloas onwards in favor of
-    `POST /eth/v1/validator/proposer_preferences`, which supersedes both fee recipient and
+    `POST /sil/v1/validator/proposer_preferences`, which supersedes both fee recipient and
     gas limit preferences. Beacon node support for this endpoint pre-Gloas is REQUIRED;
     post-Gloas support is OPTIONAL and the endpoint MAY be removed.
 

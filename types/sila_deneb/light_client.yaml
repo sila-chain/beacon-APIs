@@ -1,4 +1,4 @@
-Deneb:
+SilaDeneb:
   LightClientHeader:
     type: object
     required: [beacon, execution, execution_branch]
@@ -6,7 +6,7 @@ Deneb:
       beacon:
         $ref: '../phase0/block.yaml#/Phase0/BeaconBlockHeader'
       execution:
-        $ref: './execution_payload.yaml#/Deneb/ExecutionPayloadHeader'
+        $ref: './execution_payload.yaml#/SilaDeneb/ExecutionPayloadHeader'
       execution_branch:
         $ref: '../capella/light_client.yaml#/Capella/ExecutionBranch'
 
@@ -15,7 +15,7 @@ Deneb:
     required: [header, current_sync_committee, current_sync_committee_branch]
     properties:
       header:
-        $ref: '#/Deneb/LightClientHeader'
+        $ref: '#/SilaDeneb/LightClientHeader'
       current_sync_committee:
         $ref: '../altair/sync_committee.yaml#/Altair/SyncCommittee'
       current_sync_committee_branch:
@@ -25,13 +25,13 @@ Deneb:
     required: [attested_header, next_sync_committee, next_sync_committee_branch, finalized_header, finality_branch, sync_aggregate, signature_slot]
     properties:
       attested_header:
-        $ref: '#/Deneb/LightClientHeader'
+        $ref: '#/SilaDeneb/LightClientHeader'
       next_sync_committee:
         $ref: '../altair/sync_committee.yaml#/Altair/SyncCommittee'
       next_sync_committee_branch:
         $ref: '../altair/light_client.yaml#/Altair/NextSyncCommitteeBranch'
       finalized_header:
-        $ref: '#/Deneb/LightClientHeader'
+        $ref: '#/SilaDeneb/LightClientHeader'
       finality_branch:
         $ref: '../altair/light_client.yaml#/Altair/FinalityBranch'
       sync_aggregate:
@@ -43,9 +43,9 @@ Deneb:
     required: [attested_header, finalized_header, finality_branch, sync_aggregate, signature_slot]
     properties:
       attested_header:
-        $ref: '#/Deneb/LightClientHeader'
+        $ref: '#/SilaDeneb/LightClientHeader'
       finalized_header:
-        $ref: '#/Deneb/LightClientHeader'
+        $ref: '#/SilaDeneb/LightClientHeader'
       finality_branch:
         $ref: '../altair/light_client.yaml#/Altair/FinalityBranch'
       sync_aggregate:
@@ -57,7 +57,7 @@ Deneb:
     required: [attested_header, sync_aggregate, signature_slot]
     properties:
       attested_header:
-        $ref: '#/Deneb/LightClientHeader'
+        $ref: '#/SilaDeneb/LightClientHeader'
       sync_aggregate:
         $ref: '../altair/sync_aggregate.yaml#/Altair/SyncAggregate'
       signature_slot:

@@ -39,8 +39,8 @@ get:
     "200":
       description: "Successful response"
       headers:
-        Eth-Consensus-Version:
-          $ref: "../../beacon-node-oapi.yaml#/components/headers/Eth-Consensus-Version"
+        Sil-Consensus-Version:
+          $ref: "../../beacon-node-oapi.yaml#/components/headers/Sil-Consensus-Version"
       content:
         application/json:
           schema:

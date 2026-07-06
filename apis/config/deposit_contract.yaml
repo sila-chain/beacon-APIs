@@ -1,7 +1,7 @@
 get:
   operationId: getDepositContract
   summary: Get deposit contract address.
-  description: Retrieve Eth1 deposit contract address and chain ID.
+  description: Retrieve Sil1 deposit contract address and chain ID.
   tags:
     - Config
   responses:
@@ -20,7 +20,7 @@ get:
                 properties:
                   chain_id:
                     $ref: ../../beacon-node-oapi.yaml#/components/schemas/Uint64
-                    description: Id of Eth1 chain on which contract is deployed.
+                    description: Id of Sil1 chain on which contract is deployed.
                     example: "1"
                   address:
                     $ref: ../../beacon-node-oapi.yaml#/components/schemas/ExecutionAddress

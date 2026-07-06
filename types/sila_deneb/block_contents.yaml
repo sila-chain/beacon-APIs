@@ -1,4 +1,4 @@
-Deneb:
+SilaDeneb:
   KZGProofs:
     type: array
     items:
@@ -15,24 +15,24 @@ Deneb:
   
   BlockContents:
     type: object
-    description: "The required object for block production according to the Deneb CL spec."
+    description: "The required object for block production according to the SilaDeneb CL spec."
     required: [block, kzg_proofs, blobs]
     properties:
       block:
-        $ref: "./block.yaml#/Deneb/BeaconBlock"
+        $ref: "./block.yaml#/SilaDeneb/BeaconBlock"
       kzg_proofs:
-        $ref: "#/Deneb/KZGProofs"
+        $ref: "#/SilaDeneb/KZGProofs"
       blobs:
-        $ref: "#/Deneb/Blobs"
+        $ref: "#/SilaDeneb/Blobs"
 
   SignedBlockContents:
     type: object
-    description: "The required signed components of block production according to the Deneb CL spec."
+    description: "The required signed components of block production according to the SilaDeneb CL spec."
     required: [signed_block, kzg_proofs, blobs]
     properties:
       signed_block:
-        $ref: "./block.yaml#/Deneb/SignedBeaconBlock"
+        $ref: "./block.yaml#/SilaDeneb/SignedBeaconBlock"
       kzg_proofs:
-        $ref: "#/Deneb/KZGProofs"
+        $ref: "#/SilaDeneb/KZGProofs"
       blobs:
-        $ref: "#/Deneb/Blobs"
+        $ref: "#/SilaDeneb/Blobs"

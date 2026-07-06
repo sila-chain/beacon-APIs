@@ -1,19 +1,19 @@
-# Ethereum Beacon APIs
+# Sila Beacon APIs
 
-[![CI](https://github.com/ethereum/beacon-APIs/workflows/CI/badge.svg)](https://github.com/ethereum/beacon-APIs/actions/workflows/main.yml?query=branch%3Amaster)
+[![CI](https://github.com/sila-chain/beacon-APIs/workflows/CI/badge.svg)](https://github.com/sila-chain/beacon-APIs/actions/workflows/main.yml?query=branch%3Amaster)
 
-Collection of RESTful APIs provided by Ethereum Beacon nodes
+Collection of RESTful APIs provided by Sila Beacon nodes
 
-API browser: [https://ethereum.github.io/beacon-APIs/](https://ethereum.github.io/beacon-APIs/)
+API browser: [https://sila.github.io/beacon-APIs/](https://sila.github.io/beacon-APIs/)
 
 ## Outline
 
-This document outlines an application programming interface (API) which is exposed by a beacon node implementation of the Ethereum [consensus layer specifications](https://github.com/ethereum/consensus-specs).
+This document outlines an application programming interface (API) which is exposed by a beacon node implementation of the Sila [consensus layer specifications](https://github.com/sila-chain/consensus-specs).
 
 The API is a REST interface, accessed via HTTP. The API should not, unless protected by additional security layers, be exposed to the public Internet as the API includes multiple endpoints which could open your node to denial-of-service (DoS) attacks through endpoints triggering heavy processing.
  Currently, the only supported return data type is JSON.
 
-The beacon node (BN) maintains the state of the beacon chain by communicating with other beacon nodes in the Ethereum network.
+The beacon node (BN) maintains the state of the beacon chain by communicating with other beacon nodes in the Sila network.
 Conceptually, it does not maintain keypairs that participate with the beacon chain.
 
 The validator client (VC) is a conceptually separate entity which utilizes private keys

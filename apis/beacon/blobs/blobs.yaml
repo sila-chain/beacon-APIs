@@ -8,7 +8,7 @@ get:
     If the `versioned_hashes` parameter is specified, only the blobs for the specified versioned hashes will be returned. Blobs are 
     returned as an ordered list matching the order of their corresponding KZG commitments in the block.
 
-    After the Fulu fork, only supernodes (which custody all data columns) are required to return blobs. Clients may implement
+    After the SilaFulu fork, only supernodes (which custody all data columns) are required to return blobs. Clients may implement
     blob reconstruction logic for non-super nodes.
   tags:
     - Beacon

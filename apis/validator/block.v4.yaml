@@ -17,7 +17,7 @@ get:
     When using an external builder bid, only the `BeaconBlock` is returned as the beacon node
     does not have access to the builder's execution payload.
 
-    The `Eth-Execution-Payload-Included` header and `execution_payload_included` response field
+    The `Sil-Execution-Payload-Included` header and `execution_payload_included` response field
     indicate which response type was returned.
   parameters:
     - name: slot
@@ -53,7 +53,7 @@ get:
 
         When `false`, only the beacon block is returned and the beacon node caches the execution
         payload envelope and blobs internally. The validator client must then fetch them separately
-        via `GET /eth/v1/validator/execution_payload_envelopes/{slot}/{beacon_block_root}`. This saves
+        via `GET /sil/v1/validator/execution_payload_envelopes/{slot}/{beacon_block_root}`. This saves
         bandwidth but requires the validator client to publish via the same beacon node that
         produced the block (stateful operation).
 
@@ -102,12 +102,12 @@ get:
     "200":
       description: Success response
       headers:
-        Eth-Consensus-Version:
-          $ref: '../../beacon-node-oapi.yaml#/components/headers/Eth-Consensus-Version'
-        Eth-Consensus-Block-Value:
-          $ref: '../../beacon-node-oapi.yaml#/components/headers/Eth-Consensus-Block-Value'
-        Eth-Execution-Payload-Included:
-          $ref: '../../beacon-node-oapi.yaml#/components/headers/Eth-Execution-Payload-Included'
+        Sil-Consensus-Version:
+          $ref: '../../beacon-node-oapi.yaml#/components/headers/Sil-Consensus-Version'
+        Sil-Consensus-Block-Value:
+          $ref: '../../beacon-node-oapi.yaml#/components/headers/Sil-Consensus-Block-Value'
+        Sil-Execution-Payload-Included:
+          $ref: '../../beacon-node-oapi.yaml#/components/headers/Sil-Execution-Payload-Included'
       content:
         application/json:
           schema:
@@ -137,7 +137,7 @@ get:
                   - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Gloas.BlockContents"
         application/octet-stream:
           schema:
-            description: "SSZ serialized `BeaconBlock` or `BlockContents` bytes. Use Accept header to choose this response type, version string is sent in header `Eth-Consensus-Version` and payload inclusion indicated by `Eth-Execution-Payload-Included` header."
+            description: "SSZ serialized `BeaconBlock` or `BlockContents` bytes. Use Accept header to choose this response type, version string is sent in header `Sil-Consensus-Version` and payload inclusion indicated by `Sil-Execution-Payload-Included` header."
     "400":
       description: "Invalid block production request"
       content:

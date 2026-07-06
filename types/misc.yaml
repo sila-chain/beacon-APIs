@@ -1,6 +1,6 @@
 Fork:
   type: object
-  description: "The [`Fork`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#fork) object from the CL spec."
+  description: "The [`Fork`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#fork) object from the CL spec."
   required: [previous_version, current_version, epoch]
   properties:
     previous_version:
@@ -12,7 +12,7 @@ Fork:
 
 Checkpoint:
   type: object
-  description: "The [`Checkpoint`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#checkpoint) object from the CL spec."
+  description: "The [`Checkpoint`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#checkpoint) object from the CL spec."
   required: [epoch, root]
   properties:
     epoch:

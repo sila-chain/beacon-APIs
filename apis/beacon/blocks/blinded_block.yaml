@@ -15,8 +15,8 @@ get:
     "200":
       description: "Successful response"
       headers:
-        Eth-Consensus-Version:
-          $ref: '../../../beacon-node-oapi.yaml#/components/headers/Eth-Consensus-Version'
+        Sil-Consensus-Version:
+          $ref: '../../../beacon-node-oapi.yaml#/components/headers/Sil-Consensus-Version'
       content:
         application/json:
           schema:
@@ -26,8 +26,8 @@ get:
             properties:
               version:
                 type: string
-                enum: [phase0, altair, bellatrix, capella, deneb, electra, fulu]
-                example: "fulu"
+                enum: [phase0, altair, bellatrix, capella, sila_deneb, electra, sila_fulu]
+                example: "sila_fulu"
               execution_optimistic:
                 $ref: "../../../beacon-node-oapi.yaml#/components/schemas/ExecutionOptimistic"
               finalized:
@@ -35,7 +35,7 @@ get:
               data:
                 anyOf:
                   - $ref: "../../../beacon-node-oapi.yaml#/components/schemas/Electra.SignedBlindedBeaconBlock"
-                  - $ref: "../../../beacon-node-oapi.yaml#/components/schemas/Deneb.SignedBlindedBeaconBlock"
+                  - $ref: "../../../beacon-node-oapi.yaml#/components/schemas/SilaDeneb.SignedBlindedBeaconBlock"
                   - $ref: "../../../beacon-node-oapi.yaml#/components/schemas/Capella.SignedBlindedBeaconBlock"
                   - $ref: "../../../beacon-node-oapi.yaml#/components/schemas/Bellatrix.SignedBlindedBeaconBlock"
                   - $ref: "../../../beacon-node-oapi.yaml#/components/schemas/Altair.SignedBeaconBlock"

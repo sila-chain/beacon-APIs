@@ -72,14 +72,14 @@ get:
     "200":
       description: Success response
       headers:
-        Eth-Consensus-Version:
-          $ref: '../../beacon-node-oapi.yaml#/components/headers/Eth-Consensus-Version'
-        Eth-Execution-Payload-Blinded:
-          $ref: '../../beacon-node-oapi.yaml#/components/headers/Eth-Execution-Payload-Blinded'
-        Eth-Execution-Payload-Value:
-          $ref: '../../beacon-node-oapi.yaml#/components/headers/Eth-Execution-Payload-Value'
-        Eth-Consensus-Block-Value:
-          $ref: '../../beacon-node-oapi.yaml#/components/headers/Eth-Consensus-Block-Value'
+        Sil-Consensus-Version:
+          $ref: '../../beacon-node-oapi.yaml#/components/headers/Sil-Consensus-Version'
+        Sil-Execution-Payload-Blinded:
+          $ref: '../../beacon-node-oapi.yaml#/components/headers/Sil-Execution-Payload-Blinded'
+        Sil-Execution-Payload-Value:
+          $ref: '../../beacon-node-oapi.yaml#/components/headers/Sil-Execution-Payload-Value'
+        Sil-Consensus-Block-Value:
+          $ref: '../../beacon-node-oapi.yaml#/components/headers/Sil-Consensus-Block-Value'
       content:
         application/json:
           schema:
@@ -89,8 +89,8 @@ get:
             properties:
               version:
                 type: string
-                enum: [phase0, altair, bellatrix, capella, deneb, electra, fulu]
-                example: "fulu"
+                enum: [phase0, altair, bellatrix, capella, sila_deneb, electra, sila_fulu]
+                example: "sila_fulu"
               execution_payload_blinded:
                 type: boolean
                 example: false
@@ -102,11 +102,11 @@ get:
                 example: "12345"
               data:
                 anyOf:
-                 - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Fulu.BlockContents"
+                 - $ref: "../../beacon-node-oapi.yaml#/components/schemas/SilaFulu.BlockContents"
                  - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Electra.BlockContents"
                  - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Electra.BlindedBeaconBlock"
-                 - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Deneb.BlockContents"
-                 - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Deneb.BlindedBeaconBlock"
+                 - $ref: "../../beacon-node-oapi.yaml#/components/schemas/SilaDeneb.BlockContents"
+                 - $ref: "../../beacon-node-oapi.yaml#/components/schemas/SilaDeneb.BlindedBeaconBlock"
                  - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Capella.BeaconBlock"
                  - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Capella.BlindedBeaconBlock"
                  - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Bellatrix.BeaconBlock"
@@ -115,7 +115,7 @@ get:
                  - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Phase0.BeaconBlock"
         application/octet-stream:
           schema:
-            description: "SSZ serialized block or blinded block bytes. Use Accept header to choose this response type, version string is sent in header `Eth-Consensus-Version` and block type in `Eth-Blinded-Payload`."
+            description: "SSZ serialized block or blinded block bytes. Use Accept header to choose this response type, version string is sent in header `Sil-Consensus-Version` and block type in `Sil-Blinded-Payload`."
     "400":
       description: "Invalid block production request"
       content:

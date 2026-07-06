@@ -2,7 +2,7 @@ get:
   operationId: "getProposerLookahead"
   summary: "Get State Proposer Lookahead"
   description: |
-    Returns proposer lookahead for state with given 'stateId'. Should return 400 if the state retrieved is prior to Fulu.
+    Returns proposer lookahead for state with given 'stateId'. Should return 400 if the state retrieved is prior to SilaFulu.
   tags:
     - Beacon
   parameters:
@@ -13,8 +13,8 @@ get:
     "200":
       description: Success
       headers:
-        Eth-Consensus-Version:
-          $ref: '../../../beacon-node-oapi.yaml#/components/headers/Eth-Consensus-Version'
+        Sil-Consensus-Version:
+          $ref: '../../../beacon-node-oapi.yaml#/components/headers/Sil-Consensus-Version'
           description: "The active consensus version to which the proposer lookahead data belongs."
       content:
         application/json:
@@ -25,7 +25,7 @@ get:
             properties:
               version:
                 $ref: "../../../beacon-node-oapi.yaml#/components/schemas/ConsensusVersion"
-                example: "fulu"
+                example: "sila_fulu"
               execution_optimistic:
                 $ref: "../../../beacon-node-oapi.yaml#/components/schemas/ExecutionOptimistic"
               finalized:

@@ -7,9 +7,9 @@ Electra:
       block:
         $ref: "./block.yaml#/Electra/BeaconBlock"
       kzg_proofs:
-        $ref: "../deneb/block_contents.yaml#/Deneb/KZGProofs"
+        $ref: "../sila_deneb/block_contents.yaml#/SilaDeneb/KZGProofs"
       blobs:
-        $ref: "../deneb/block_contents.yaml#/Deneb/Blobs"
+        $ref: "../sila_deneb/block_contents.yaml#/SilaDeneb/Blobs"
 
   SignedBlockContents:
     type: object
@@ -19,6 +19,6 @@ Electra:
       signed_block:
         $ref: "./block.yaml#/Electra/SignedBeaconBlock"
       kzg_proofs:
-        $ref: "../deneb/block_contents.yaml#/Deneb/KZGProofs"
+        $ref: "../sila_deneb/block_contents.yaml#/SilaDeneb/KZGProofs"
       blobs:
-        $ref: "../deneb/block_contents.yaml#/Deneb/Blobs"
+        $ref: "../sila_deneb/block_contents.yaml#/SilaDeneb/Blobs"

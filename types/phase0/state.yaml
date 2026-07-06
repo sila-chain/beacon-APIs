@@ -1,8 +1,8 @@
 Phase0:
   BeaconState:
     type: object
-    description: "The [`BeaconState`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#beacon-state) object from the CL spec."
-    required: [genesis_time, genesis_validators_root, slot, fork, latest_block_header, block_roots, state_roots, historical_roots, eth1_data, eth1_data_votes, eth1_deposit_index, validators, balances, randao_mixes, slashings, previous_epoch_attestations, current_epoch_attestations, justification_bits, previous_justified_checkpoint, current_justified_checkpoint, finalized_checkpoint]
+    description: "The [`BeaconState`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#beacon-state) object from the CL spec."
+    required: [genesis_time, genesis_validators_root, slot, fork, latest_block_header, block_roots, state_roots, historical_roots, sil1_data, sil1_data_votes, sil1_deposit_index, validators, balances, randao_mixes, slashings, previous_epoch_attestations, current_epoch_attestations, justification_bits, previous_justified_checkpoint, current_justified_checkpoint, finalized_checkpoint]
     properties:
       genesis_time:
         $ref: "../primitive.yaml#/Uint64"
@@ -29,14 +29,14 @@ Phase0:
         description: "Variable length list, maximum 16777216 items"
         items:
           $ref: '../primitive.yaml#/Root'
-      eth1_data:
-        $ref: "./eth1.yaml#/Phase0/Eth1Data"
-      eth1_data_votes:
+      sil1_data:
+        $ref: "./sil1.yaml#/Phase0/Sil1Data"
+      sil1_data_votes:
         type: array
         description: "Fixed length of 1024 items"
         items:
-          $ref: './eth1.yaml#/Phase0/Eth1Data'
-      eth1_deposit_index:
+          $ref: './sil1.yaml#/Phase0/Sil1Data'
+      sil1_deposit_index:
         $ref: "../primitive.yaml#/Uint64"
       validators:
         type: array

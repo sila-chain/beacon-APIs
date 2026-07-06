@@ -2,10 +2,10 @@ get:
   operationId: getLightClientUpdatesByRange
   summary: Get `LightClientUpdate` instances in a requested sync committee period range
   description: |
-    Requests the [`LightClientUpdate`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/altair/light-client/sync-protocol.md#lightclientupdate) instances in the sync committee period range `[start_period, start_period + count)`, leading up to the current head sync committee period as selected by fork choice.
+    Requests the [`LightClientUpdate`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/altair/light-client/sync-protocol.md#lightclientupdate) instances in the sync committee period range `[start_period, start_period + count)`, leading up to the current head sync committee period as selected by fork choice.
     Depending on the `Accept` header they can be returned either as JSON or SSZ-serialized bytes.
 
-    Servers SHOULD provide results as defined in [`create_light_client_update`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/altair/light-client/full-node.md#create_light_client_update). They MUST respond with at least the earliest known result within the requested range, and MUST send results in consecutive order (by period). The response MUST NOT contain more than [`min(MAX_REQUEST_LIGHT_CLIENT_UPDATES, count)`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/altair/light-client/p2p-interface.md#configuration) results.
+    Servers SHOULD provide results as defined in [`create_light_client_update`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/altair/light-client/full-node.md#create_light_client_update). They MUST respond with at least the earliest known result within the requested range, and MUST send results in consecutive order (by period). The response MUST NOT contain more than [`min(MAX_REQUEST_LIGHT_CLIENT_UPDATES, count)`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/altair/light-client/p2p-interface.md#configuration) results.
   tags:
     - Beacon
   parameters:
@@ -36,7 +36,7 @@ get:
                 data:
                   anyOf:
                     - $ref: '../../../beacon-node-oapi.yaml#/components/schemas/Electra.LightClientUpdate'
-                    - $ref: '../../../beacon-node-oapi.yaml#/components/schemas/Deneb.LightClientUpdate'
+                    - $ref: '../../../beacon-node-oapi.yaml#/components/schemas/SilaDeneb.LightClientUpdate'
                     - $ref: '../../../beacon-node-oapi.yaml#/components/schemas/Capella.LightClientUpdate'
                     - $ref: '../../../beacon-node-oapi.yaml#/components/schemas/Altair.LightClientUpdate'
         application/octet-stream:
@@ -63,7 +63,7 @@ get:
               | `GENESIS_FORK_VERSION`                                              | n/a                                   |
               | <nobr>`ALTAIR_FORK_VERSION` through `BELLATRIX_FORK_VERSION`</nobr> | `altair.LightClientUpdate`            |
               | <nobr>`CAPELLA_FORK_VERSION` </nobr>                                | `capella.LightClientUpdate`           |
-              | <nobr>`DENEB_FORK_VERSION` </nobr>                                  | `deneb.LightClientUpdate`             |
+              | <nobr>`SILA_DENEB_FORK_VERSION` </nobr>                                  | `sila_deneb.LightClientUpdate`             |
               | <nobr>`ELECTRA_FORK_VERSION` and later</nobr>                       | `electra.LightClientUpdate`           |
     "400":
       description: Malformed or missing request parameter

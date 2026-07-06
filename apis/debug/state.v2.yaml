@@ -15,8 +15,8 @@ get:
     "200":
       description: Success
       headers:
-        Eth-Consensus-Version:
-          $ref: '../../beacon-node-oapi.yaml#/components/headers/Eth-Consensus-Version'
+        Sil-Consensus-Version:
+          $ref: '../../beacon-node-oapi.yaml#/components/headers/Sil-Consensus-Version'
       content:
         application/json:
           schema:
@@ -26,17 +26,17 @@ get:
             properties:
               version:
                 type: string
-                enum: [phase0, altair, bellatrix, capella, deneb, electra, fulu]
-                example: "fulu"
+                enum: [phase0, altair, bellatrix, capella, sila_deneb, electra, sila_fulu]
+                example: "sila_fulu"
               execution_optimistic:
                 $ref: "../../beacon-node-oapi.yaml#/components/schemas/ExecutionOptimistic"
               finalized:
                 $ref: "../../beacon-node-oapi.yaml#/components/schemas/Finalized"
               data:
                 anyOf:
-                 - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Fulu.BeaconState"
+                 - $ref: "../../beacon-node-oapi.yaml#/components/schemas/SilaFulu.BeaconState"
                  - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Electra.BeaconState"
-                 - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Deneb.BeaconState"
+                 - $ref: "../../beacon-node-oapi.yaml#/components/schemas/SilaDeneb.BeaconState"
                  - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Capella.BeaconState"
                  - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Bellatrix.BeaconState"
                  - $ref: "../../beacon-node-oapi.yaml#/components/schemas/Altair.BeaconState"

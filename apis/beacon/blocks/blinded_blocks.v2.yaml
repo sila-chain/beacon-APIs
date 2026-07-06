@@ -41,7 +41,7 @@ post:
       schema:
         $ref: '../../../beacon-node-oapi.yaml#/components/schemas/ConsensusVersion'
       required: true
-      name: Eth-Consensus-Version
+      name: Sil-Consensus-Version
       description: "The active consensus version to which the block being submitted belongs."
   requestBody:
     description: "The `SignedBlindedBeaconBlock` object composed of `BlindedBeaconBlock` object (produced by beacon node) and validator signature."
@@ -51,7 +51,7 @@ post:
         schema:
           anyOf:
             - $ref: "../../../beacon-node-oapi.yaml#/components/schemas/Electra.SignedBlindedBeaconBlock"
-            - $ref: "../../../beacon-node-oapi.yaml#/components/schemas/Deneb.SignedBlindedBeaconBlock"
+            - $ref: "../../../beacon-node-oapi.yaml#/components/schemas/SilaDeneb.SignedBlindedBeaconBlock"
             - $ref: "../../../beacon-node-oapi.yaml#/components/schemas/Capella.SignedBlindedBeaconBlock"
             - $ref: "../../../beacon-node-oapi.yaml#/components/schemas/Bellatrix.SignedBlindedBeaconBlock"
             - $ref: "../../../beacon-node-oapi.yaml#/components/schemas/Altair.SignedBeaconBlock"

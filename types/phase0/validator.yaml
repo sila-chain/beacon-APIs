@@ -1,7 +1,7 @@
 Phase0:
   Validator:
     type: object
-    description: "The [`Validator`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#validator) object from the CL spec."
+    description: "The [`Validator`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#validator) object from the CL spec."
     required: [pubkey, withdrawal_credentials, effective_balance, slashed, activation_eligibility_epoch, activation_epoch, exit_epoch, withdrawable_epoch]
     properties:
       pubkey:
@@ -40,7 +40,7 @@ Phase0:
 
   Aggregate:
     type: object
-    description: "The [`AggregateAndProof`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/phase0/validator.md#aggregateandproof) without selection_proof"
+    description: "The [`AggregateAndProof`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/phase0/validator.md#aggregateandproof) without selection_proof"
     required: [aggregator_index, aggregate]
     properties:
       aggregator_index:
@@ -50,7 +50,7 @@ Phase0:
 
   SignedAggregateAndProof:
     type: object
-    description: "The [`SignedAggregateAndProof`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/phase0/validator.md#signedaggregateandproof) object"
+    description: "The [`SignedAggregateAndProof`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/phase0/validator.md#signedaggregateandproof) object"
     required: [message, signature]
     properties:
       message:

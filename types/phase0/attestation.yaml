@@ -1,7 +1,7 @@
 Phase0:
   IndexedAttestation:
     type: object
-    description: "The [`IndexedAttestation`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#indexedattestation) object from the CL spec."
+    description: "The [`IndexedAttestation`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#indexedattestation) object from the CL spec."
     required: [attesting_indices, data, signature]
     properties:
       attesting_indices:
@@ -18,7 +18,7 @@ Phase0:
 
   Attestation:
     type: object
-    description: "The [`Attestation`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#attestation) object from the CL spec."
+    description: "The [`Attestation`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#attestation) object from the CL spec."
     required: [aggregation_bits, data, signature]
     properties:
       aggregation_bits:
@@ -32,7 +32,7 @@ Phase0:
 
   PendingAttestation:
     type: object
-    description: "The [`PendingAttestation`](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#pendingattestation) object from the CL spec."
+    description: "The [`PendingAttestation`](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/phase0/beacon-chain.md#pendingattestation) object from the CL spec."
     required: [aggregation_bits, data, inclusion_delay, proposer_index]
     properties:
       aggregation_bits:

@@ -10,7 +10,7 @@ post:
       schema:
         $ref: '../../beacon-node-oapi.yaml#/components/schemas/ConsensusVersion'
       required: true
-      name: Eth-Consensus-Version
+      name: Sil-Consensus-Version
       description: "The active consensus version to which the aggregate and proofs being submitted belong."
   requestBody:
     required: true

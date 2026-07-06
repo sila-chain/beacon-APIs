@@ -10,7 +10,7 @@ NetworkIdentity:
       type: array
       items:
         $ref: "./p2p.yaml#/Multiaddr"
-        description: "Node's addresses on which eth2 RPC requests are served. [Read more](https://docs.libp2p.io/reference/glossary/#multiaddr)"
+        description: "Node's addresses on which sil2 RPC requests are served. [Read more](https://docs.libp2p.io/reference/glossary/#multiaddr)"
     discovery_addresses:
       type: array
       items:
@@ -22,7 +22,7 @@ NetworkIdentity:
 
 MetaData:
   type: object
-  description: "Based on eth2 [Metadata object](https://github.com/ethereum/consensus-specs/blob/v1.3.0/specs/phase0/p2p-interface.md#metadata)"
+  description: "Based on sil2 [Metadata object](https://github.com/sila-chain/consensus-specs/blob/v1.3.0/specs/phase0/p2p-interface.md#metadata)"
   required: [seq_number, attnets]
   properties:
     seq_number:
@@ -37,7 +37,7 @@ MetaData:
       $ref: "./primitive.yaml#/Bitvector"
       example: "0x0f"
     custody_group_count:
-      description: "Uint64 representing the node's custody group count. The metadata is present from the Fulu fork."
+      description: "Uint64 representing the node's custody group count. The metadata is present from the SilaFulu fork."
       $ref: "./primitive.yaml#/Uint64"
 
 Peer:
@@ -73,7 +73,7 @@ PeerId:
 
 ENR:
   type: string
-  description: "Ethereum node record. [Read more](https://eips.ethereum.org/EIPS/eip-778)"
+  description: "Sila node record. [Read more](https://sips.sila.org/SIPS/sip-778)"
   example: "enr:-IS4QHCYrYZbAKWCBRlAy5zzaDZXJBGkcnh4MHcBFZntXNFrdvJjX04jRzjzCBOonrkTfj499SZuOh8R33Ls8RRcy5wBgmlkgnY0gmlwhH8AAAGJc2VjcDI1NmsxoQPKY0yuDUmstAHYpMa2_oxVtw0RW_QAdpzBQA8yWM0xOIN1ZHCCdl8"
 
 Multiaddr:

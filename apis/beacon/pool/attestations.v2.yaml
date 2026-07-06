@@ -19,8 +19,8 @@ get:
     "200":
       description: Successful response
       headers:
-        Eth-Consensus-Version:
-          $ref: '../../../beacon-node-oapi.yaml#/components/headers/Eth-Consensus-Version'
+        Sil-Consensus-Version:
+          $ref: '../../../beacon-node-oapi.yaml#/components/headers/Sil-Consensus-Version'
       content:
         application/json:
           schema:
@@ -30,8 +30,8 @@ get:
             properties:
               version:
                 type: string
-                enum: [phase0, altair, bellatrix, capella, deneb, electra, fulu]
-                example: "fulu"
+                enum: [phase0, altair, bellatrix, capella, sila_deneb, electra, sila_fulu]
+                example: "sila_fulu"
               data:
                 anyOf:
                   - type: array
@@ -68,7 +68,7 @@ post:
       schema:
         $ref: '../../../beacon-node-oapi.yaml#/components/schemas/ConsensusVersion'
       required: true
-      name: Eth-Consensus-Version
+      name: Sil-Consensus-Version
       description: "The consensus version to which the attestations being submitted belong."
   tags:
     - Beacon

@@ -1,4 +1,4 @@
-Fulu:
+SilaFulu:
   KZGProofs:
     type: array
     items:
@@ -8,26 +8,26 @@ Fulu:
 
   BlockContents:
     type: object
-    description: "The required object for block production according to the Fulu CL spec."
+    description: "The required object for block production according to the SilaFulu CL spec."
     required: [block, kzg_proofs, blobs]
     properties:
       block:
         $ref: "../electra/block.yaml#/Electra/BeaconBlock"
       kzg_proofs:
-        description: "Cell proofs of the blobs as defined in EIP-7594"
-        $ref: "#/Fulu/KZGProofs"
+        description: "Cell proofs of the blobs as defined in SIP-7594"
+        $ref: "#/SilaFulu/KZGProofs"
       blobs:
-        $ref: "../deneb/block_contents.yaml#/Deneb/Blobs"
+        $ref: "../sila_deneb/block_contents.yaml#/SilaDeneb/Blobs"
 
   SignedBlockContents:
     type: object
-    description: "The required signed components of block production according to the Fulu CL spec."
+    description: "The required signed components of block production according to the SilaFulu CL spec."
     required: [signed_block, kzg_proofs, blobs]
     properties:
       signed_block:
         $ref: "../electra/block.yaml#/Electra/SignedBeaconBlock"
       kzg_proofs:
-        description: "Cell proofs of the blobs as defined in EIP-7594"
-        $ref: "#/Fulu/KZGProofs"
+        description: "Cell proofs of the blobs as defined in SIP-7594"
+        $ref: "#/SilaFulu/KZGProofs"
       blobs:
-        $ref: "../deneb/block_contents.yaml#/Deneb/Blobs"
+        $ref: "../sila_deneb/block_contents.yaml#/SilaDeneb/Blobs"
