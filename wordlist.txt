@@ -37,6 +37,8 @@ KZGProofs
 KZGCommitmentInclusionProof
 LMD
 sila_fulu
+SilaFulu
+fulu
 gloas
 LH
 ClientVersionV
