@@ -41,7 +41,7 @@ jobs:
           branch: release-${{ github.ref_name }}
           title: "Release ${{ github.ref_name }}"
           body-path: "release-notes.md"
-          base: master
+          base: main
           add-paths: index.html,CHANGES.md
       - name: Create Release
         id: create_release

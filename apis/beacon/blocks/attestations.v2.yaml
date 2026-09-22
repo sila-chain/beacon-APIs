@@ -25,14 +25,17 @@ get:
             properties:
               version:
                 type: string
-                enum: [phase0, altair, bellatrix, capella, sila_deneb, electra, sila_fulu]
-                example: "sila_fulu"
+                enum: [phase0, altair, bellatrix, capella, sila_deneb, electra, sila_fulu, gloas]
+                example: "gloas"
               execution_optimistic:
                 $ref: "../../../beacon-node-oapi.yaml#/components/schemas/ExecutionOptimistic"
               finalized:
                 $ref: "../../../beacon-node-oapi.yaml#/components/schemas/Finalized"
               data:
                 anyOf:
+                  - type: array
+                    items:
+                      $ref: '../../../beacon-node-oapi.yaml#/components/schemas/Gloas.Attestation'
                   - type: array
                     items:
                       $ref: '../../../beacon-node-oapi.yaml#/components/schemas/Electra.Attestation'

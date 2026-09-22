@@ -16,7 +16,7 @@ dev
 BLS
 SSZ
 RANDAO
-EIP
+SIP
 el
 DVT
 MEV
@@ -37,6 +37,8 @@ KZGProofs
 KZGCommitmentInclusionProof
 LMD
 sila_fulu
+SilaFulu
+fulu
 gloas
 LH
 ClientVersionV
@@ -47,3 +49,5 @@ produceBlockV
 stateful
 CGC
 RLP
+UTF
+uri
