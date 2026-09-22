@@ -26,7 +26,7 @@ ClientCode:
 GenesisTime:
   $ref: "./primitive.yaml#/Uint64"
   example: "1590832934"
-  description: "The genesis_time configured for the beacon node, which is the unix time in seconds at which the Eth2.0 chain began."
+  description: "The genesis_time configured for the beacon node, which is the unix time in seconds at which the Sil2.0 chain began."
 
 Wei:
   $ref: "./primitive.yaml#/Uint256"
@@ -132,7 +132,7 @@ ExtraData:
 BlockAccessList:
   type: string
   format: hex
-  description: "RLP encoded `BlockAccessList` represented as a `ProgressiveByteList`, as defined in [SIP-7928](https://sips.sila.org/EIPS/sip-7928)"
+  description: "RLP encoded `BlockAccessList` represented as a `ProgressiveByteList`, as defined in [SIP-7928](https://sips.sila.org/SIPS/sip-7928)"
   example: "0xe5e494abcf8e0d4e9587369b2301d0790347320302cc09c0c0cac90187b1a2bc2ec50000c0c0"
   pattern: "^0x([a-fA-F0-9]{2})*$"
 

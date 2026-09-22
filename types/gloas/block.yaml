@@ -2,13 +2,13 @@ Gloas:
   BeaconBlockBody:
     type: object
     description: "The [`BeaconBlockBody`](https://github.com/sila-chain/consensus-specs/blob/v1.7.0-beta.0/specs/gloas/beacon-chain.md#beaconblockbody) object from the CL Gloas spec."
-    required: [randao_reveal, eth1_data, graffiti, proposer_slashings, attester_slashings, attestations, deposits, voluntary_exits, sync_aggregate, bls_to_execution_changes, signed_execution_payload_bid, payload_attestations, parent_execution_requests]
+    required: [randao_reveal, sil1_data, graffiti, proposer_slashings, attester_slashings, attestations, deposits, voluntary_exits, sync_aggregate, bls_to_execution_changes, signed_execution_payload_bid, payload_attestations, parent_execution_requests]
     properties:
       randao_reveal:
         $ref: "../primitive.yaml#/Signature"
         description: "The RANDAO reveal value provided by the validator."
-      eth1_data:
-        $ref: "../phase0/sil1.yaml#/Phase0/Eth1Data"
+      sil1_data:
+        $ref: "../phase0/sil1.yaml#/Phase0/Sil1Data"
       graffiti:
         $ref: "../primitive.yaml#/Graffiti"
       proposer_slashings:
