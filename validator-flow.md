@@ -14,25 +14,37 @@ Detail explanation how validator should utilize this API to perform his regular 
 On start of every epoch, validator should [fetch proposer duties](#/Validator/getProposerDuties).
 Result is array of objects, each containing proposer pubkey and slot at which he is suppose to propose.
 
+Post-Gloas, in the epoch prior to a proposal the validator MAY
+[submit builder preferences](#/Validator/submitBuilderPreferences) so builders hold them before the
+bid request arrives.
+
 If proposing block, then at immediate start of slot:
 1. Ask Beacon Node for BeaconBlock object:
    - Pre-Gloas forks: [produceBlockV3](#/Validator/produceBlockV3)
    - Post-Gloas fork: [produceBlockV4](#/Validator/produceBlockV4)
-     - `include_payload=true` (default): returns `BlockContents` (beacon block, execution payload envelope,
+     - Supply a `BuilderConfig` in the required request body, with the `Sil-Consensus-Version`
+       header: the builder entries to solicit builder-API bids, plus the top-level `min_bid` and
+       `builder_boost_factor` that apply to p2p bids.
+     - `include_payload=true`: returns `BlockContents` (beacon block, execution payload envelope,
        blobs, and KZG proofs). Enables stateless operation (multi-BN setups, distributed validators, failover).
      - `include_payload=false`: returns only the `BeaconBlock`. The beacon node caches the execution payload
        envelope and blobs internally (stateful operation, must publish via the same beacon node).
-     - When using an external builder's bid, only the `BeaconBlock` is returned regardless of `include_payload`.
+     - When a bid wins, only the `BeaconBlock` is returned regardless of `include_payload`, and
+       `Sil-Builder-Url` names the builder if the bid came through the builder-API channel.
 2. Sign block
-3. [Submit SignedBeaconBlock](#/ValidatorRequiredApi/publishBlock) (BeaconBlock + signature)
-4. Post-Gloas, if self-building (proposer's own bid included in block):
+3. [Submit SignedBeaconBlock](#/ValidatorRequiredApi/publishBlock) (BeaconBlock + signature),
+   echoing the `Sil-Builder-Url` header if one was returned
+4. Post-Gloas, if self-building (the block's `builder_index` is [BUILDER_INDEX_SELF_BUILD](https://github.com/sila-chain/consensus-specs/blob/v1.7.0-alpha.12/specs/gloas/beacon-chain.md#misc)):
   - Stateless (`include_payload=true`): envelope and blobs are already available from step 1.
     Sign envelope and [submit `SignedExecutionPayloadEnvelopeContents`](#/Beacon/publishExecutionPayloadEnvelope)
     (envelope + blobs + KZG proofs).
   - Stateful (`include_payload=false`): [fetch ExecutionPayloadEnvelope](#/Validator/getExecutionPayloadEnvelope)
-    from the same beacon node (blinded form by default). Sign envelope and [submit `SignedBlindedExecutionPayloadEnvelope`](#/Beacon/publishExecutionPayloadEnvelope)
-    (beacon node reconstructs the full envelope from its cache).
-  - Must submit early enough for PTC attestation by [PAYLOAD_ATTESTATION_DUE_BPS](https://github.com/sila-chain/consensus-specs/blob/v1.7.0-alpha.2/specs/gloas/validator.md#time-parameters) of slot duration
+    from the same beacon node. Sign envelope and [submit `SignedExecutionPayloadEnvelope`](#/Beacon/publishExecutionPayloadEnvelope)
+    (beacon node attaches blobs and KZG proofs from its cache).
+  - Must submit before [PAYLOAD_DUE_BPS](https://github.com/sila-chain/consensus-specs/blob/v1.7.0-alpha.12/specs/gloas/validator.md#time-parameters) of slot duration for the PTC to attest the payload as present
+
+5. Post-Gloas, if a bid won (any other `builder_index`): nothing further. The winning builder
+   releases the execution payload envelope.
 
 Monitor chain block reorganization events (TBD) as they could change block proposers.
 If reorg is detected, ask for new proposer duties and proceed from 1.
@@ -89,16 +101,11 @@ Builders register by depositing with builder-specific withdrawal credentials (`B
 in the beacon state's builder registry.
 
 Building:
-1. [Fetch ExecutionPayloadBid](#/Validator/getExecutionPayloadBid) from beacon node for the current or next slot's proposer to include.
-    - Beacon node obtains payload via `engine_getPayload` call to execution client
+1. Obtain payload via `engine_getPayload` call to execution client and construct `ExecutionPayloadBid` for the current or next slot's proposer to include.
 2. Cache fields required to form an [ExecutionPayloadEnvelope](https://github.com/sila-chain/consensus-specs/blob/v1.7.0-alpha.8/specs/gloas/beacon-chain.md#executionpayloadenvelope)
 2. Sign `ExecutionPayloadBid` to create `SignedExecutionPayloadBid`
 3. [Submit SignedExecutionPayloadBid](#/Beacon/publishExecutionPayloadBid) to network for proposer consideration
-4. If bid is selected by proposer in their block:
-    - [Fetch ExecutionPayloadEnvelope](#/Validator/getExecutionPayloadEnvelope) from beacon node (blinded form by default)
-    - Sign envelope and submit to network via [publishExecutionPayloadEnvelope](#/Beacon/publishExecutionPayloadEnvelope):
-      - Stateless (multi-BN): submit `SignedExecutionPayloadEnvelopeContents` (envelope + blobs + KZG proofs)
-      - Stateful (single BN): submit `SignedBlindedExecutionPayloadEnvelope` (beacon node reconstructs full envelope from cache)
-    - Must submit early enough for PTC attestation by [PAYLOAD_ATTESTATION_DUE_BPS](https://github.com/sila-chain/consensus-specs/blob/v1.7.0-alpha.2/specs/gloas/validator.md#time-parameters) of slot duration
+4. If bid is selected by proposer in their block, sign envelope and [submit `SignedExecutionPayloadEnvelopeContents`](#/Beacon/publishExecutionPayloadEnvelope) (envelope + blobs + KZG proofs) via any beacon node
+    - Must submit before [PAYLOAD_DUE_BPS](https://github.com/sila-chain/consensus-specs/blob/v1.7.0-alpha.12/specs/gloas/validator.md#time-parameters) of slot duration for the PTC to attest the payload as present
 
 Monitor for block proposals containing your bid to trigger envelope release.
