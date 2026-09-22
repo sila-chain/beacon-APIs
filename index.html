@@ -1,0 +1,107 @@
+<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Beacon-API</title>
+    <link rel="stylesheet" type="text/css" href="./dist/swagger-ui.css" >
+    <link rel="stylesheet" type="text/css" href="./dist/theme-material.css" >
+    <style>
+      .swagger-ui .topbar-wrapper a {
+        content: url("./assets/sila_logo.png");
+        height: 68px; /* Width of new image */
+        max-width: 40px;
+      }
+    </style>
+    <link rel="icon" type="image/png" href="./dist/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./dist/favicon-16x16.png" sizes="16x16" />
+    <style>
+      html
+      {
+        box-sizing: border-box;
+        overflow: -moz-scrollbars-vertical;
+        overflow-y: scroll;
+      }
+
+      *,
+      *:before,
+      *:after
+      {
+        box-sizing: inherit;
+      }
+
+      body
+      {
+        margin:0;
+        background: #fafafa;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="swagger-ui"></div>
+
+    <script src="./dist/swagger-ui-bundle.js"> </script>
+    <script src="./dist/swagger-ui-standalone-preset.js"> </script>
+    <script>
+    // A plugin to render the schema description for application/octet-stream in the RequestBody component,
+    // rather than showing "Example values are not available for <type> media types."
+    const RequestBodySchemaDescription = () => ({
+      wrapComponents: {
+        RequestBody: (Original, system) => (props) => {
+          const React = system.React
+          const contentType = props.contentType || ""
+          const isOctetStreamType = contentType.startsWith("application/octet-stream")
+          const description = isOctetStreamType && props.requestBody
+            ? props.requestBody.getIn(["content", contentType, "schema", "description"])
+            : null
+          if (!description) {
+            return React.createElement(Original, props)
+          }
+          const Markdown = system.getComponent("Markdown", true)
+          return React.createElement("div", null,
+            React.createElement("div", {className: "request-body-schema-description"},
+              React.createElement(Markdown, {source: description})),
+            React.createElement(Original, props))
+        }
+      }
+    })
+
+    window.onload = function() {
+      // Begin Swagger UI call region
+      const ui = SwaggerUIBundle({
+        urls: [
+          {url: "./releases/v4.0.0/beacon-node-oapi.json", name: "v4.0.0"},
+          {url: "./releases/v3.1.0/beacon-node-oapi.json", name: "v3.1.0"},
+          {url: "./releases/v3.0.0/beacon-node-oapi.json", name: "v3.0.0"},
+          {url: "./releases/v2.5.0/beacon-node-oapi.json", name: "v2.5.0"},
+          {url: "./releases/v2.4.2/beacon-node-oapi.json", name: "v2.4.2"},
+          {url: "./releases/v2.4.1/beacon-node-oapi.json", name: "v2.4.1"},
+          {url: "./releases/v2.4.0/beacon-node-oapi.json", name: "v2.4.0"},
+          {url: "./releases/v2.3.0/beacon-node-oapi.json", name: "v2.3.0"},
+          {url: "./releases/v2.2.0/beacon-node-oapi.json", name: "v2.2.0"},
+          {url: "./beacon-node-oapi.yaml", name: "dev"}
+        ],
+        basePath: "/",
+        dom_id: '#swagger-ui',
+        displayRequestDuration: true,
+        deepLinking: true,
+        docExpansion: "none",
+        queryConfigEnabled: "true",
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl,
+          RequestBodySchemaDescription
+        ],
+        layout: "StandaloneLayout"
+   })
+      // End Swagger UI call region
+
+      window.ui = ui
+    }
+  </script>
+  </body>
+</html>
