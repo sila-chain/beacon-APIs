@@ -30,10 +30,13 @@ get:
             properties:
               version:
                 type: string
-                enum: [phase0, altair, bellatrix, capella, sila_deneb, electra, sila_fulu]
-                example: "sila_fulu"
+                enum: [phase0, altair, bellatrix, capella, sila_deneb, electra, sila_fulu, gloas]
+                example: "gloas"
               data:
                 anyOf:
+                  - type: array
+                    items:
+                      $ref: '../../../beacon-node-oapi.yaml#/components/schemas/Gloas.Attestation'
                   - type: array
                     items:
                       $ref: '../../../beacon-node-oapi.yaml#/components/schemas/Electra.Attestation'
